@@ -7,8 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  async getUsers() {
-    console.log('getUsers');
-    return this.appService.getUsers();
+  async filter() {
+    return this.appService.filter();
   }
 }

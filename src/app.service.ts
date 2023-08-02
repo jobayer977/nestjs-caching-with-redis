@@ -7,13 +7,9 @@ import { Cache } from 'cache-manager';
 export class AppService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
-  async getUsers() {
+  async filter() {
     try {
       const checkCache = await this.cacheManager.get('entries');
-      console.log(
-        '🚀 ~ file: app.service.ts:13 ~ AppService ~ getUsers ~ checkCache:',
-        checkCache,
-      );
       if (checkCache) {
         console.log('from cache');
         return checkCache;
