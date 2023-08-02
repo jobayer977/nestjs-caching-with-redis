@@ -9,16 +9,20 @@ export class AppService {
 
   async getUsers() {
     try {
-      // const checkCache = await this.cacheManager.get('entries');
-      // if (checkCache) {
-      //   console.log('from cache');
-      //   return checkCache;
-      // }
+      const checkCache = await this.cacheManager.get('entries');
+      console.log(
+        '🚀 ~ file: app.service.ts:13 ~ AppService ~ getUsers ~ checkCache:',
+        checkCache,
+      );
+      if (checkCache) {
+        console.log('from cache');
+        return checkCache;
+      }
       const response = await axios
         .get('https://api.publicapis.org/entries')
         .then((res) => res.data);
 
-      // await this.cacheManager.set('entries', response, 60000);
+      await this.cacheManager.set('entries', response);
       console.log('from api');
       return response;
     } catch (error) {
