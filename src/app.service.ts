@@ -1,16 +1,16 @@
-import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
-import axios from 'axios';
+
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
+import axios from 'axios';
 
 @Injectable()
 export class AppService {
-  constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) {}
-
   async getHello() {
     const response = await axios
       .get('https://api.publicapis.org/entries')
       .then((res) => res.data);
+    console.log('From API');
     return response;
   }
 }
