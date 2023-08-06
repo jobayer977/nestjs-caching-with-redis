@@ -8,7 +8,7 @@ import axios from 'axios';
 export class AppService {
   async getHello() {
     const response = await axios
-      .get('https://api.publicapis.org/entries')
+      .get('https://jsonplaceholder.typicode.com/todos')
       .then((res) => res.data);
     console.log('From API');
     return response;
